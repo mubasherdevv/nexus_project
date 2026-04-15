@@ -1,8 +1,8 @@
 import { Server, Socket } from 'socket.io';
 import { Server as HttpServer } from 'http';
-import { Message } from '../models/Message';
-import { User } from '../models/User';
-import { Notification } from '../models/Notification';
+import { Message } from '../models/Message.js';
+import { User } from '../models/User.js';
+import { Notification } from '../models/Notification.js';
 
 // Map to track active users: userId -> socketId
 const userSocketMap = new Map<string, string>();

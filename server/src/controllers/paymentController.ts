@@ -1,9 +1,10 @@
 import { Request, Response } from 'express';
 import mongoose from 'mongoose';
-import { User } from '../models/User';
-import { Transaction } from '../models/Transaction';
-import { Notification } from '../models/Notification';
-import { emitNotification } from '../utils/socketManager';
+import { User } from '../models/User.js';
+import { Transaction } from '../models/Transaction.js';
+import { Notification } from '../models/Notification.js';
+import { AuthRequest } from '../middleware/auth.js';
+import { emitNotification } from '../utils/socketManager.js';
 
 // Mock Stripe/PayPal SDK Response
 const simulatePaymentGateway = async (amount: number): Promise<{ success: boolean; id: string }> => {

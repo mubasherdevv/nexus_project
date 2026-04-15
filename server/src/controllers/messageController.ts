@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
-import { Message } from '../models/Message';
-import { User } from '../models/User';
+import { AuthRequest } from '../middleware/auth.js';
+import { Message } from '../models/Message.js';
+import { User } from '../models/User.js';
 import mongoose from 'mongoose';
 
 export const getMessages = async (req: Request, res: Response) => {

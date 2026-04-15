@@ -1,7 +1,10 @@
 import { Request, Response } from 'express';
-import { Meeting } from '../models/Meeting';
-import { Notification } from '../models/Notification';
-import { emitNotification } from '../utils/socketManager';
+import { Meeting } from '../models/Meeting.js';
+import { Notification } from '../models/Notification.js';
+import { DocumentModel } from '../models/Document.js';
+import { User } from '../models/User.js';
+import { AuthRequest } from '../middleware/auth.js';
+import { emitNotification } from '../utils/socketManager.js';
 import { v4 as uuidv4 } from 'uuid';
 
 export const scheduleMeeting = async (req: Request, res: Response): Promise<void> => {

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import multer from 'multer';
 import path from 'path';
-import { DocumentModel } from '../models/Document';
+import { DocumentModel } from '../models/Document.js';
 import fs from 'fs';
 
 // Multer configuration

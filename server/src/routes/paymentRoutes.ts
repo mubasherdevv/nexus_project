@@ -5,8 +5,8 @@ import {
   withdrawFunds, 
   transferFunds, 
   getTransactions 
-} from '../controllers/paymentController';
-import { protect } from '../middleware/auth';
+} from '../controllers/paymentController.js';
+import { protect } from '../middleware/auth.js';
 
 const router = Router();
 

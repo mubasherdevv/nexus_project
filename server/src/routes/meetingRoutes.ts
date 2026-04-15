@@ -1,6 +1,8 @@
 import { Router } from 'express';
-import { scheduleMeeting, getUserMeetings, updateMeetingStatus } from '../controllers/meetingController';
-import { protect } from '../middleware/auth';
+import { scheduleMeeting, getUserMeetings, updateMeetingStatus } from '../controllers/meetingController.js';
+import { protect } from '../middleware/auth.js';
+import { DocumentModel } from '../models/Document.js';
+import { User } from '../models/User.js';
 
 const router = Router();
 

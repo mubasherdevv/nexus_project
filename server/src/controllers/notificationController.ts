@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
-import { Notification } from '../models/Notification';
+import { AuthRequest } from '../middleware/auth.js';
+import { Notification } from '../models/Notification.js';
 
-export const getNotifications = async (req: Request, res: Response) => {
+export const getNotifications = async (req: AuthRequest, res: Response) => {
   try {
     const userId = req.user?.id;
     const notifications = await Notification.find({ recipient: userId })
@@ -28,7 +29,7 @@ export const markAsRead = async (req: Request, res: Response) => {
   }
 };
 
-export const markAllAsRead = async (req: Request, res: Response) => {
+export const markAllAsRead = async (req: AuthRequest, res: Response) => {
   try {
     const userId = req.user?.id;
     await Notification.updateMany({ recipient: userId, read: false }, { read: true });
@@ -38,7 +39,7 @@ export const markAllAsRead = async (req: Request, res: Response) => {
   }
 };
 
-export const getUnreadCount = async (req: Request, res: Response) => {
+export const getUnreadCount = async (req: AuthRequest, res: Response) => {
   try {
     const userId = req.user?.id;
     const count = await Notification.countDocuments({ recipient: userId, read: false });

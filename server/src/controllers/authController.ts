@@ -1,6 +1,6 @@
-import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import { User, IUser } from '../models/User';
+import { User, IUser } from '../models/User.js';
+import { Request, Response } from 'express';
 
 interface RegisterBody {
   name: string;

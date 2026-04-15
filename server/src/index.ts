@@ -7,12 +7,12 @@ import profileRoutes from './routes/profiles.js';
 import meetingRoutes from './routes/meetingRoutes.js';
 import documentRoutes from './routes/documentRoutes.js';
 import messageRoutes from './routes/messageRoutes.js';
-import paymentRoutes from './routes/paymentRoutes';
-import notificationRoutes from './routes/notification';
+import paymentRoutes from './routes/paymentRoutes.js';
+import notificationRoutes from './routes/notification.js';
 import path from 'path';
 
 import http from 'http';
-import { initSocket } from './utils/socketManager';
+import { initSocket } from './utils/socketManager.js';
 
 dotenv.config();
 
