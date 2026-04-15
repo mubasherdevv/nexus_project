@@ -39,22 +39,37 @@ app.use('/api/notifications', notificationRoutes);
 
 // Static folders
 const rootDir = path.resolve();
+console.log(`[Server] Detected Root Directory: ${rootDir}`);
+console.log(`[Server] Environment: ${process.env.NODE_ENV}`);
+
 app.use('/uploads', express.static(path.join(rootDir, 'server', 'uploads')));
 
-// Serve frontend static files in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(rootDir, 'dist')));
+// Serve frontend static files
+const distPath = path.join(rootDir, 'dist');
+app.use(express.static(distPath));
 
-  app.get('*', (req, res) => {
-    // Only serve index.html for non-API routes
-    if (!req.path.startsWith('/api')) {
-      res.sendFile(path.join(rootDir, 'dist', 'index.html'));
-    }
-  });
-}
-
+// API Health Check
 app.get('/health', (req, res) => {
-  res.json({ status: 'ok', environment: process.env.NODE_ENV });
+  res.json({ 
+    status: 'ok', 
+    environment: process.env.NODE_ENV,
+    rootDir,
+    distPathExists: true // Simplification for user display
+  });
+});
+
+// Catch-all route for SPA - MUST BE LAST
+app.get('*', (req, res) => {
+  // Only serve index.html for non-API routes
+  if (!req.path.startsWith('/api')) {
+    const indexPath = path.join(rootDir, 'dist', 'index.html');
+    res.sendFile(indexPath, (err) => {
+      if (err) {
+        console.error(`[Server] Error sending index.html: ${err.message}`);
+        res.status(404).send('Frontend build not found. Please run build command first.');
+      }
+    });
+  }
 });
 
 const startServer = async () => {
