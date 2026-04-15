@@ -48,13 +48,18 @@ app.use('/uploads', express.static(path.join(rootDir, 'server', 'uploads')));
 const distPath = path.join(rootDir, 'dist');
 app.use(express.static(distPath));
 
+import fs from 'fs';
+
 // API Health Check
 app.get('/health', (req, res) => {
+  const dPath = path.join(rootDir, 'dist');
   res.json({ 
     status: 'ok', 
     environment: process.env.NODE_ENV,
     rootDir,
-    distPathExists: true // Simplification for user display
+    distPath: dPath,
+    distPathExists: fs.existsSync(dPath),
+    indexExists: fs.existsSync(path.join(dPath, 'index.html'))
   });
 });
 
