@@ -2,6 +2,8 @@
 
 Nexus is a premium platform designed to bridge the gap between visionary entrepreneurs and strategic investors. It provides a seamless environment for pitching ideas, managing investments, and communicating in real-time.
 
+## 🚀 Project Live Url :  https://nexusproject.up.railway.app
+
 ## 🚀 Key Features
 
 - **Real-Time Communication**: WhatsApp-style chat system with message status (Sent, Delivered, Read), typing indicators, and user presence (Online/Last Seen).
