@@ -44,5 +44,3 @@ Nexus is a premium platform designed to bridge the gap between visionary entrepr
    cd server && npm run dev
    ```
 
-## 📜 License
-This project is for demonstration purposes.
