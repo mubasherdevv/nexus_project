@@ -38,11 +38,23 @@ app.use('/api/payments', paymentRoutes);
 app.use('/api/notifications', notificationRoutes);
 
 // Static folders
-const __dirname = path.resolve();
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+const rootDir = path.resolve();
+app.use('/uploads', express.static(path.join(rootDir, 'server', 'uploads')));
+
+// Serve frontend static files in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(rootDir, 'dist')));
+
+  app.get('*', (req, res) => {
+    // Only serve index.html for non-API routes
+    if (!req.path.startsWith('/api')) {
+      res.sendFile(path.join(rootDir, 'dist', 'index.html'));
+    }
+  });
+}
 
 app.get('/health', (req, res) => {
-  res.json({ status: 'ok' });
+  res.json({ status: 'ok', environment: process.env.NODE_ENV });
 });
 
 const startServer = async () => {
