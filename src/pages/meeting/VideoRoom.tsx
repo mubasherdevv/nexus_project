@@ -6,7 +6,7 @@ import { Button } from '../../components/ui/Button';
 import { useAuth } from '../../context/AuthContext';
 import toast from 'react-hot-toast';
 
-const SOCKET_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+import { SOCKET_URL } from '../../services/api';
 
 export const VideoRoom: React.FC = () => {
   const { roomId } = useParams<{ roomId: string }>();

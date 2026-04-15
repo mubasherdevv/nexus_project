@@ -10,7 +10,7 @@ import { io, Socket } from 'socket.io-client';
 import { formatDistanceToNow } from 'date-fns';
 import toast from 'react-hot-toast';
 
-const SOCKET_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+import { SOCKET_URL } from '../../services/api';
 
 export const NotificationsPage: React.FC = () => {
   const { user } = useAuth();

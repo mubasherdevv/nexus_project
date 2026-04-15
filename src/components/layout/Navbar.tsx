@@ -7,7 +7,7 @@ import { Button } from '../ui/Button';
 import { notificationAPI } from '../../services/api';
 import { io, Socket } from 'socket.io-client';
 
-const SOCKET_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+import { SOCKET_URL } from '../../services/api';
 
 export const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

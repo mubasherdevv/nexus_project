@@ -14,6 +14,8 @@ const api = axios.create({
   },
 });
 
+export const SOCKET_URL = isLocalhost ? 'http://localhost:5000' : window.location.origin;
+
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('nexus_token');
   if (token) {

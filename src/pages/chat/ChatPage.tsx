@@ -12,7 +12,7 @@ import { io, Socket } from 'socket.io-client';
 import toast from 'react-hot-toast';
 import { formatDistanceToNow } from 'date-fns';
 
-const SOCKET_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+import { SOCKET_URL } from '../../services/api';
 
 export const ChatPage: React.FC = () => {
   const { userId } = useParams<{ userId: string }>();
